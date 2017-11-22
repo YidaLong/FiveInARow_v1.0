@@ -6,7 +6,6 @@
 
 #define BLACK 1
 #define WHITE 2
-using  std::string;
 using namespace std;
 void InitGameUI();
 void gotoXY(short, short);
@@ -20,7 +19,6 @@ int x = 0, y = 0;
 int position[19][19] = { 0 };
 int main(void)
 {
-	
 	InitGameUI();
 	
 	Sleep(1000);
@@ -32,16 +30,12 @@ int main(void)
 		RunChess(black);
 		RunChess(white);			
 	}
-	
-	
 	return 0;
 }
 //move chess pieces
 bool RunChess(string color)
 {
 	char ch = 'B';
-	
-	
 	while (ch != 'J')
 	{
 		ch = _getch();
@@ -51,9 +45,7 @@ bool RunChess(string color)
 			{
 				y = y - 1;
 				gotoXY(x, y);
-
 			}
-
 		}
 		else if (ch == 'S')
 		{
@@ -61,9 +53,7 @@ bool RunChess(string color)
 			{
 				y = y + 1;
 				gotoXY(x, y);
-
 			}
-
 		}
 		else if (ch == 'A')
 		{
@@ -71,9 +61,7 @@ bool RunChess(string color)
 			{
 				x = x - 2;
 				gotoXY(x, y);
-
 			}
-
 		}
 		else if (ch == 'D')
 		{
@@ -81,10 +69,7 @@ bool RunChess(string color)
 			{
 				x = x + 2;
 				gotoXY(x, y);
-
 			}
-
-
 		}
 		else if (ch == 'J')
 		{
@@ -104,11 +89,9 @@ bool RunChess(string color)
 				position[y][x>>1] = WHITE;
 			}
 			judgeWin();
-			
 		}
 	}
 	return true;
-		
 	}
 void CreateChessboard()
 {
@@ -152,10 +135,8 @@ void CreateChessboard()
 			{
 				cout << "┘";
 			}
-			
 		}
 		cout << endl;
-		
 	}
 }
 void InitGameUI()
@@ -178,7 +159,6 @@ void gotoXY(short x, short y)
 	COORD pos = { x,y };
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(hOut, pos);
-
 }
 bool judgeWin()
 {
@@ -192,7 +172,6 @@ bool judgeWin()
 		{
 			for (h = 0;h < 19;++h)
 			{
-				
 				if (position[v][h] == BLACK)
 				{					
 					++b;
@@ -221,7 +200,6 @@ bool judgeWin()
 					w = 0;
 				}
 			}
-			
 		}
 		h = 0;
 		v = 0;
@@ -230,7 +208,6 @@ bool judgeWin()
 		{
 			for (h = 0;h < 19;++h)
 			{
-
 				if (position[h][v] == BLACK)
 				{
 					++b;
@@ -262,8 +239,6 @@ bool judgeWin()
 
 		}
 		//angles	左上|右下
-	
-		
 		for (v = 0;v < 19;v++)
 		{
 			xp = cnt;
@@ -303,9 +278,7 @@ bool judgeWin()
 				
 			}
 			cnt++;
-		
 		}
-
 		cnt = 1;
 		for (v = 18;v >0;--v)
 		{
@@ -344,10 +317,8 @@ bool judgeWin()
 				//cout << "(" << xp << "," << yp << ")";
 				xp -= 1;
 				yp += 1;
-
 			}
 			++cnt;
-			
 		}
 		//angle 右上|左下
 		cnt = 18;
@@ -384,15 +355,11 @@ bool judgeWin()
 					b = 0;
 					w = 0;
 				}
-
 				xp += 1;
 				yp += 1;
-
 			}
 			--cnt;
-
 		}
-
 		cnt = 1;
 		for (v = 18;v >0;--v)
 		{
@@ -434,7 +401,6 @@ bool judgeWin()
 
 			}
 			++cnt;
-
 		}
 		return false;
 }

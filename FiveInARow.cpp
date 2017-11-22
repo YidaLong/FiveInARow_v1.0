@@ -12,7 +12,7 @@ void gotoXY(short, short);
 void CreateChessboard();
 bool RunChess(string);
 bool judgeWin();
-//overall variable
+// global variable
 const string black{ "○" };
 const string white{ "●" };
 int x = 0, y = 0;
